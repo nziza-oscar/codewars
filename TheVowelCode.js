@@ -10,7 +10,7 @@ function encode(string) {
     const decoded = string.split("").map((letter)=> !isNaN(Number(letter)) ? vowels[Number(letter)-1] : (letter == undefined ?" ":letter) ).join("")
     
     // console.log(decoded)
-    return decode;
+    return decoded;
 }
 
 const encoded = encode("nziza oscar");
