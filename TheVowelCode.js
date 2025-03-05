@@ -5,4 +5,14 @@ function encode(string) {
     return extraction;
   }
   
+  function decode(string) {
+    const vowels = ["a","e","i","o","u"]; 
+    const decoded = string.split("").map((letter)=> !isNaN(Number(letter)) ? vowels[Number(letter)-1] : (letter == undefined ?" ":letter) ).join("")
+    
+    // console.log(decoded)
+    return decode;
+}
+
+const encoded = encode("nziza oscar");
+const decoded = decode(encoded);
 
