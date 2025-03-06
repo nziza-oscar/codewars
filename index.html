@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Card</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        .card {
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+            background: #f5f5f5;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div id="card" class="card">
+        <h2>Professional Card</h2>
+        <p>Your Name</p>
+    </div>
+    <button onclick="shareOnWhatsApp()">Share on WhatsApp</button>
+
+    <script>
+        function shareOnWhatsApp() {
+            html2canvas(document.querySelector("#card")).then(canvas => {
+                let image = canvas.toDataURL("image/png");
+                let blob = dataURLtoBlob(image);
+                let url = URL.createObjectURL(blob);
+                let whatsappUrl = `https://api.whatsapp.com/send?text=Check%20out%20this%20card!&url=${url}`;
+                window.open(whatsappUrl, "_blank");
+            });
+        }
+
+        function dataURLtoBlob(dataURL) {
+            let arr = dataURL.split(","), mime = arr[0].match(/:(.*?);/)[1],
+                bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+            while (n--) {
+                u8arr[n] = bstr.charCodeAt(n);
+            }
+            return new Blob([u8arr], { type: mime });
+        }
+    </script>
+</body>
+</html>
