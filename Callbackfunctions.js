@@ -11,18 +11,13 @@ function countWithDelay(callback) {
    counterHelper()
 }
 
-
-// countWithDelay(displayResult);
+countWithDelay(displayResult);
 
 function displayResult(result){
     console.log(result)
 }
 
-
-
 function formatName(firstName, lastName, callback) {
-    
-     
     return callback(firstName,lastName)
 }
 
