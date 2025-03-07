@@ -12,8 +12,24 @@ function countWithDelay(callback) {
 }
 
 
-countWithDelay(displayResult);
+// countWithDelay(displayResult);
 
 function displayResult(result){
     console.log(result)
 }
+
+
+
+function formatName(firstName, lastName, callback) {
+    
+     
+    return callback(firstName,lastName)
+}
+
+const fullName = (fname,lname)=>console.log(`${fname} ${lname}`);
+const upperCased = (fname,lname)=> console.log(`${String(lname).toUpperCase()} ${fname}`);
+const initials = (fname,lname)=> console.log(`${String(lname).charAt(0).toUpperCase()}. ${lname}`)
+
+formatName("John", "Doe", fullName);
+formatName("John", "Doe", upperCased);
+formatName("John", "Doe", initials);
