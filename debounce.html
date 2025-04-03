@@ -1,0 +1,25 @@
+<input type="text">
+
+<script>
+
+ const input = document.querySelector("input")
+
+ function debounce(func,delay){
+    let timer
+    
+    return function (...args){
+        clearTimeout(timer)
+        timer = setTimeout(()=>func.apply(this,args),delay)
+    }
+
+ }
+
+ const handleSearch = debounce((query)=>{
+             console.log(query)
+ },3000)
+
+ input.addEventListener('input',(e)=>{
+    handleSearch(e.target.value)
+ })
+
+</script>
